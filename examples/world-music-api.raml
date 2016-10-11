@@ -200,3 +200,17 @@ uses:
             application/xml:
               type: !include world-music-api/schemas/songs.xsd
               example: !include world-music-api/examples/songs.xml
+
+/forecasts:
+  displayName: Forecasts
+  description: The very top resource - displays OK
+  /{geoposition}:
+    description: Overview endpoint to assemble and access forecast data in various timely resolutions - THIS IS NOT DISPLAYED ANYWHERE WITH RAML2HTML :/
+    uriParameters:
+      geoposition:
+        description: A geoposition aquired by calling /geoposition/search - displays OK
+        type: string
+    get:
+      description: Provides an overview of the available data - display OK
+  /test:
+    description: No methods here, but it does have a description

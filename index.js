@@ -56,12 +56,16 @@ function getDefaultConfig(mainTemplate, templatesPath) {
     templatesPath = __dirname;
   }
 
+  if (templatesPath === '__dirname') {
+    templatesPath = __dirname;
+  }
+
   return {
     processRamlObj(ramlObj, config) {
       const renderer = new marked.Renderer();
       renderer.table = function (thead, tbody) {
         // Render Bootstrap style tables
-        return `<table class="table"><thead>${thead}</thead><tbody>${tbody}</tbody></table>`;
+        return `<table><thead>${thead}</thead><tbody>${tbody}</tbody></table>`;
       };
 
       // Setup the Nunjucks environment with the markdown parser

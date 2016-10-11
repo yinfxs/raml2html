@@ -1,0 +1,124 @@
+<!DOCTYPE HTML><meta charset="utf-8"><title>Example RAML 1.0 API documentation</title><style>
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    color: #1E2829;
+  }
+
+  header {
+    background: #79AD2C;
+    color: white;
+  }
+
+  .container {
+    display: flex;
+    flex: 1;
+  }
+
+  .sidebar {
+    background: #E8E8E8;
+    padding: 20px;
+  }
+
+  .content {
+    flex-grow: 1;
+    padding: 20px;
+  }
+
+  .resources-container h3 {
+    border-bottom: 1px solid black;
+  }
+
+  .resource-container {
+    background: #f1f1f1;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .method-container {
+    background: #E8E8E8;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  table td {
+    padding-right: 20px;
+  }
+
+  thead th {
+    text-align: left;
+    font-weight: bold;
+  }
+</style><body><header><h1>Example RAML 1.0 API documentation <small>version 1</small></h1><p>http://example.com/{version}</p></header><div class="container"><div class="sidebar"><h2>Documentation</h2><ul><li><a href="#welcome">Welcome</a></li><li><a href="#chapter_two">Chapter two</a></li></ul><h2>Reference</h2><ul><li><a href="#account">ACCOUNT</a></li><li><a href="#accounts">ACCOUNTS</a></li><li><a href="#forecasts">Forecasts</a></li><li><a href="#conversations">/conversations</a></li><li><a href="#users">/users</a></li><li><a href="#groups">/groups</a></li></ul></div><div class="content"><div class="documentation-container"><h2>Documentation</h2><div class="documentation-chapter"><h3 id="welcome">Welcome</h3><p>Welcome to the Example Documentation. The Example API allows you to do stuff. See also <a href="https://www.example.com">example.com</a>.</p><pre><code class="lang-javascript">var raml2html = require(&#39;raml2html&#39;);
+
+// Using the default templates:
+// source can either be a filename, file contents (string) or parsed RAML object
+raml2html.parse(source, onSuccess, onError);
+
+// Using your own templates:
+// - config should be an object with at least an `template` property
+// - config can also include `helpers` and `partials`
+// - the config object will be accessible from your handlebars templates
+raml2html.parseWithConfig(source, config, onSuccess, onError);
+</code></pre></div><div class="documentation-chapter"><h3 id="chapter_two">Chapter two</h3><p>More content here. Including <strong>bold</strong> text!</p><p>Small table:</p><table><thead><tr><th>A</th><th>B</th><th>C</th></tr></thead><tbody><tr><td>1</td><td>2</td><td>3</td></tr></tbody></table><p>Done</p></div></div><div class="resources-container"><h2>Reference</h2><div><h3 id="account">ACCOUNT</h3><div class="resource-container"><h4 id="account"><span></span>/account</h4><div><p>This is the top level description for /account.</p><ul><li>One</li><li>Two</li><li>Three</li></ul></div><div class="method-container"><h3>post</h3><div><p>Creates a new account. Some <strong>bold</strong> text here. More text. Need to fill the line, so make it longer still. Hooray! Line two</p><p>Paragraph two</p></div><div class="method-request"><h4>Request</h4><h5>Body</h5><div class="method-request-body"><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: Account</p><h5>Properties</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description and examples</th></tr></thead><tbody><tr><td>password</td><td>string</td><td>no</td><td></td></tr></tbody></table><p><strong>Examples</strong>:</p><pre><code>{
+  "email": "john@example.com",
+  "password": "super_secret",
+  "name": "John Doe"
+}
+</code></pre><pre><code>{
+  "email": "john2@example.com",
+  "password": "super_secret",
+  "name": "John Doe II"
+}</code></pre><pre><code>{
+  "email": "john@example.com",
+  "password": "super_secret",
+  "name": "John Doe"
+}
+</code></pre></div><div class="method-request-body"><p><strong>Media type</strong>: application/x-yaml</p><p><strong>Type</strong>: Account</p><h5>Properties</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description and examples</th></tr></thead><tbody><tr><td>password</td><td>string</td><td>no</td><td></td></tr></tbody></table><p><strong>Examples</strong>:</p><pre><code>{
+  "email": "john@example.com",
+  "password": "super_secret",
+  "name": "John Doe"
+}
+</code></pre></div></div><div class="method-responses"><h4>Responses</h4><div class="method-response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><div><p>Account was created and user is now logged in</p></div></div></div></div></div><div class="resource-container"><h4 id="account_find"><span>/account</span>/find</h4><div class="method-container"><h3>get</h3><div><p>find an account</p></div><div class="method-request"><h4>Request</h4><h5>Query Parameters</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description and examples</th></tr></thead><tbody><tr><td>name</td><td>string</td><td>no</td><td><p>name on account</p><p><strong>Examples</strong>:</p><pre>Naruto Uzumaki</pre></td></tr><tr><td>gender</td><td>string</td><td>no</td><td><p>One of male, female.</p></td></tr><tr><td>number</td><td>integer</td><td>no</td><td><p>Default value: 42.</p></td></tr></tbody></table></div></div></div><div class="resource-container"><h4 id="account__id_"><span>/account</span>/{id}</h4><h5>URI Parameters</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description and examples</th></tr></thead><tbody><tr><td>id</td><td>string</td><td>no</td><td><p>One of male, female.</p></td></tr></tbody></table><div class="method-container"><h3>get</h3><div class="method-request"><h4>Request</h4><h5>Headers</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description and examples</th></tr></thead><tbody><tr><td>Authorization</td><td>string</td><td>no</td><td><p>Basic authentication header</p><p><strong>Examples</strong>:</p><pre>Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+</pre></td></tr></tbody></table></div><div class="method-responses"><h4>Responses</h4><div class="method-response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h5>Body</h5><div class="method-response-body"><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><h5>Properties</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description and examples</th></tr></thead><tbody><tr><td>name</td><td>string</td><td>no</td><td></td></tr><tr><td>Email</td><td>string</td><td>no</td><td><p>Pattern: ^.+@.+\..+$.</p></td></tr><tr><td>gender</td><td>string</td><td>no</td><td><p>One of male, female.</p></td></tr></tbody></table></div></div></div></div><div class="method-container"><h3>put</h3><div><p>Update the account</p></div><div class="method-request"><h4>Request</h4><h5>Body</h5><div class="method-request-body"><p><strong>Media type</strong>: application/json</p></div><div class="method-request-body"><p><strong>Media type</strong>: application/x-www-form-urlencoded</p><p><strong>Type</strong>: object</p><h5>Properties</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description and examples</th></tr></thead><tbody><tr><td>name</td><td>string</td><td>no</td><td><p>name on account</p></td></tr><tr><td>gender</td><td>string</td><td>no</td><td><p>One of male, female.</p></td></tr></tbody></table></div></div></div><div class="method-container"><h3>delete</h3><div><p>Delete the account</p></div></div></div><div class="resource-container"><h4 id="account_login"><span>/account</span>/login</h4><div class="method-container"><h3>post</h3><div><p>Login with email and password</p></div><div class="method-request"><h4>Request</h4><h5>Body</h5><div class="method-request-body"><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Examples</strong>:</p><pre><code>{
+  "email": "john@example.com",
+  "password": "super_secret"
+}
+</code></pre><pre><code>{
+  "email": "david@example.com",
+  "password": "super_secret"
+}
+</code></pre><pre><code>{
+  "email": "john@example.com",
+  "password": "super_secret"
+}
+</code></pre></div></div><div class="method-responses"><h4>Responses</h4><div class="method-response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><div><p>Login was correct</p></div><h5>Body</h5><div class="method-response-body"><p><strong>Media type</strong>: text/xml</p><p><strong>Type</strong>: object</p><p><strong>Examples</strong>:</p><pre><code>&lt;test&gt;This is first test&lt;/test&gt;
+</code></pre><pre><code>&lt;test&gt;This is second test&lt;/test&gt;
+</code></pre><pre><code>&lt;test&gt;This is a test&lt;/test&gt;
+</code></pre></div></div><div class="method-response"><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><div><p>Login was incorrect, please try again</p></div></div><div class="method-response"><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><div><p>Not authorized</p></div><h5>Headers</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description and examples</th></tr></thead><tbody><tr><td>WWW-Authenticate</td><td>string</td><td>no</td><td><p>user was not authorized</p><p><strong>Examples</strong>:</p><pre>WWW-Authenticate: Basic realm="raml2html"
+</pre></td></tr></tbody></table></div></div></div></div><div class="resource-container"><h4 id="account_forgot"><span>/account</span>/forgot</h4><div class="method-container"><h3>post</h3><div><p>Sends an email to the user with a link to set a new password</p></div><div class="method-responses"><h4>Responses</h4><div class="method-response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><div><p>Test</p></div><h5>Body</h5><div class="method-response-body"><p><strong>Media type</strong>: text/xml</p><p><strong>Type</strong>: object</p><p><strong>Examples</strong>:</p><pre><code>&lt;test&gt;This is a test&lt;/test&gt;
+</code></pre></div></div></div></div></div><div class="resource-container"><h4 id="account_session"><span>/account</span>/session</h4><div class="method-container"><h3>get</h3><div><p>Gets the sessions</p></div></div><div class="method-container"><h3>delete</h3><div><p>Deletes the session, logging out the user</p></div></div></div><div class="resource-container"><h4 id="account_admin"><span>/account</span>/admin</h4><div class="method-container"><h3>post</h3><div><p>Creates a new administrator account.</p></div><div class="method-request"><h4>Request</h4><h5>Body</h5><div class="method-request-body"><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: Account</p></div></div><div class="method-responses"><h4>Responses</h4><div class="method-response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><div><p>Account was created and user is now logged in</p></div></div></div></div></div><div class="resource-container"><h4 id="account_user"><span>/account</span>/user</h4><div class="method-container"><h3>post</h3><div><p>Test for multiple inheritence.</p></div><div class="method-request"><h4>Request</h4><h5>Body</h5><div class="method-request-body"><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><h5>Properties</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description and examples</th></tr></thead><tbody><tr><td>name</td><td>string</td><td>no</td><td><p>maxLength: 30.</p></td></tr><tr><td>phone</td><td>string</td><td>no</td><td><p>minLength: 10.</p><p>maxLength: 10.</p></td></tr></tbody></table></div></div></div></div></div><div><h3 id="accounts">ACCOUNTS</h3><div class="resource-container"><h4 id="accounts"><span></span>/accounts</h4><div class="method-container"><h3>post</h3><div><p>Creates multiple accounts.</p></div><div class="method-request"><h4>Request</h4><h5>Body</h5><div class="method-request-body"><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><h5>Properties</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description and examples</th></tr></thead><tbody><tr><td>count</td><td>number</td><td>no</td><td></td></tr><tr><td>PasswordProtectedAccount</td><td>Account</td><td>no</td><td><p><strong>Examples</strong>:</p><pre><code>{
+  "email": "john@example.com",
+  "password": "super_secret",
+  "name": "John Doe"
+}
+</code></pre></td></tr></tbody></table></div></div><div class="method-responses"><h4>Responses</h4><div class="method-response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><div><p>Accounts were created</p></div></div></div></div></div></div><div><h3 id="forecasts">Forecasts</h3><div class="resource-container"><h4 id="forecasts"><span></span>/forecasts</h4><div><p>The very top resource - displays OK</p></div></div><div class="resource-container"><h4 id="forecasts__geoposition_"><span>/forecasts</span>/{geoposition}</h4><div><p>Overview endpoint to assemble and access forecast data in various timely resolutions - THIS IS NOT DISPLAYED ANYWHERE WITH RAML2HTML :/</p></div><h5>URI Parameters</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description and examples</th></tr></thead><tbody><tr><td>geoposition</td><td>string</td><td>no</td><td><p>A geoposition aquired by calling /geoposition/search - displays OK</p></td></tr></tbody></table><div class="method-container"><h3>get</h3><div><p>Provides an overview of the available data - display OK</p></div></div></div><div class="resource-container"><h4 id="forecasts_test"><span>/forecasts</span>/test</h4><div><p>No methods here, but it does have a description</p></div></div></div><div><h3 id="conversations">/conversations</h3><div class="resource-container"><h4 id="conversations"><span></span>/conversations</h4><div><p>This is the top level description for /conversations.</p></div><div class="method-container"><h3>get</h3><div><p>Get a list of conversation for the current user</p></div></div><div class="method-container"><h3>post</h3><div><p>Create a new conversions. The currently logged in user doesn&#39;t need to be supplied in the members list, it&#39;s implied.</p></div><div class="method-request"><h4>Request</h4><h5>Body</h5><div class="method-request-body"><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Examples</strong>:</p><pre><code>{
+  "content": "My message!",
+  "members": [1, 2, 3]
+}
+</code></pre></div></div><div class="method-responses"><h4>Responses</h4><div class="method-response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><div><p>A conversation with these members already existed, the message was added to that one</p></div></div><div class="method-response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><div><p>The conversation was created and the message added to it</p></div></div></div></div></div><div class="resource-container"><h4 id="conversations__convid_"><span>/conversations</span>/{convId}</h4><h5>URI Parameters</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description and examples</th></tr></thead><tbody><tr><td>convId</td><td>string</td><td>no</td><td></td></tr></tbody></table><div class="method-container"><h3>get</h3><div><p>Get a single conversation including its messages</p></div></div><div class="method-container"><h3>put</h3><div><p>Update a conversation (change members)</p></div></div></div><div class="resource-container"><h4 id="conversations__convid__messages"><span>/conversations/{convId}</span>/messages</h4><h5>URI Parameters</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description and examples</th></tr></thead><tbody><tr><td>convId</td><td>string</td><td>no</td><td></td></tr></tbody></table><div class="method-container"><h3>get</h3><div><p>Get the messages for the conversation</p></div><div class="method-request"><h4>Request</h4><h5>Headers</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description and examples</th></tr></thead><tbody><tr><td>TESTING</td><td>string</td><td>no</td><td><p>does a trait render its headers?</p></td></tr></tbody></table><h5>Query Parameters</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description and examples</th></tr></thead><tbody><tr><td>page_size</td><td>number</td><td>no</td><td><p>Default value: 20.</p><p>The number of items per page</p></td></tr><tr><td>page</td><td>number</td><td>no</td><td><p>Default value: 0.</p><p>The page to return</p></td></tr></tbody></table></div></div><div class="method-container"><h3>post</h3><div><p>Add a new message to a conversation</p></div></div></div><div class="resource-container"><h4 id="conversations__convid__messages__messageid_"><span>/conversations/{convId}/messages</span>/{messageId}</h4><h5>URI Parameters</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description and examples</th></tr></thead><tbody><tr><td>convId</td><td>string</td><td>no</td><td></td></tr><tr><td>messageId</td><td>string</td><td>no</td><td></td></tr></tbody></table><div class="method-container"><h3>put</h3><div><p>Update the message</p></div></div><div class="method-container"><h3>delete</h3><div><p>Delete the message</p></div></div></div></div><div><h3 id="users">/users</h3><div class="resource-container"><h4 id="users"><span></span>/users</h4><div class="method-container"><h3>get</h3><div><p>Get a list of all users</p></div><div class="method-request"><h4>Request</h4><h5>Headers</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description and examples</th></tr></thead><tbody><tr><td>TESTING</td><td>string</td><td>no</td><td><p>does a trait render its headers?</p></td></tr></tbody></table><h5>Query Parameters</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description and examples</th></tr></thead><tbody><tr><td>from</td><td>string</td><td>no</td><td><p>Limit results to those created after from.</p><p><strong>Examples</strong>:</p><pre>2014-12-31T00:00:00.000Z</pre></td></tr><tr><td>page_size</td><td>number</td><td>no</td><td><p>Default value: 20.</p><p>The number of items per page</p></td></tr><tr><td>page</td><td>number</td><td>no</td><td><p>Default value: 0.</p><p>The page to return</p></td></tr></tbody></table></div></div><div class="method-container"><h3>post</h3><div><p>Creates a new user</p></div><div class="method-request"><h4>Request</h4><h5>Body</h5><div class="method-request-body"><p><strong>Media type</strong>: application/xml</p><p><strong>Type</strong>: object</p><p><strong>Examples</strong>:</p><pre><code>&lt;h1&gt;Hello!&lt;/h1&gt;
+</code></pre></div></div></div></div><div class="resource-container"><h4 id="users__userid_"><span>/users</span>/{userId}</h4><h5>URI Parameters</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description and examples</th></tr></thead><tbody><tr><td>userId</td><td>string</td><td>no</td><td></td></tr></tbody></table><div class="method-container"><h3>get</h3><div><p>Get the details of a user including a list of groups he belongs to</p></div></div><div class="method-container"><h3>put</h3><div><p>Update a user</p></div></div><div class="method-container"><h3>delete</h3><div><p>Deletes a user</p></div></div></div><div class="resource-container"><h4 id="users_name__username___account_"><span>/users</span>/name_{userName}_{account}</h4><h5>URI Parameters</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description and examples</th></tr></thead><tbody><tr><td>userName</td><td>UserName</td><td>no</td><td><p>The name of a user</p></td></tr><tr><td>account</td><td>Account</td><td>no</td><td><p>The account</p></td></tr></tbody></table><div class="method-container"><h3>get</h3><div><p>Get all the users with a specific name</p></div></div></div></div><div><h3 id="groups">/groups</h3><div class="resource-container"><h4 id="groups"><span></span>/groups</h4><div class="method-container"><h3>get</h3><div><p>Get a list of all the groups</p></div></div><div class="method-container"><h3>post</h3><div><p>Create a new group</p></div><div class="method-request"><h4>Request</h4><h5>Body</h5><div class="method-request-body"><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Examples</strong>:</p><pre><code>{
+  "name": "Cool people",
+  "members": [1, 2, 3]
+}
+</code></pre></div></div></div></div><div class="resource-container"><h4 id="groups__groupid_"><span>/groups</span>/{groupId}</h4><h5>URI Parameters</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description and examples</th></tr></thead><tbody><tr><td>groupId</td><td>string</td><td>no</td><td></td></tr></tbody></table><div class="method-container"><h3>get</h3><div><p>Get the details of a group, including the member list</p></div></div><div class="method-container"><h3>put</h3><div><p>Update the group, <strong>optionally</strong> supplying the new list of members (overwrites current list)</p></div><div class="method-request"><h4>Request</h4><h5>Body</h5><div class="method-request-body"><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Examples</strong>:</p><pre><code>{
+  "name": "Cool people",
+  "members": [1, 2, 3]
+}
+</code></pre></div></div></div><div class="method-container"><h3>delete</h3><div><p>Removes the group</p></div></div></div><div class="resource-container"><h4 id="groups__groupid__users"><span>/groups/{groupId}</span>/users</h4><h5>URI Parameters</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description and examples</th></tr></thead><tbody><tr><td>groupId</td><td>string</td><td>no</td><td></td></tr></tbody></table><div class="method-container"><h3>post</h3><div><p>Adds a user to a group</p></div><div class="method-request"><h4>Request</h4><h5>Body</h5><div class="method-request-body"><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Examples</strong>:</p><pre><code>{
+  "user_id": 4
+}
+</code></pre></div></div></div></div><div class="resource-container"><h4 id="groups__groupid__users__userid_"><span>/groups/{groupId}/users</span>/{userId}</h4><h5>URI Parameters</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description and examples</th></tr></thead><tbody><tr><td>groupId</td><td>string</td><td>no</td><td></td></tr><tr><td>userId</td><td>string</td><td>no</td><td></td></tr></tbody></table><div class="method-container"><h3>delete</h3><div><p>Removes a user from a group</p></div></div></div></div></div></div></div></body>

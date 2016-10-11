@@ -23,6 +23,14 @@ raml2html example.raml > example.html
 raml2html -t examples/custom-template-test/template.nunjucks -i example.raml -o example.html
 ```
 
+If you want to use the old version of the raml2html template
+
+```
+raml2html -t lib/old-templates/template.nunjucks -p __dirname -i example.raml -o example.html
+```
+
+(The `-p __dirname` bit sets the template path to the raml2html directory instead of using the current working directory.)
+
 ### As a library
 
 #### Using the default templates or your own Nunjucks templates
